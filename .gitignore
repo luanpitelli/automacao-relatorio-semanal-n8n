@@ -1,0 +1,17 @@
+.env
+.env.*
+credentials.json
+*.key
+*.pem
+.n8n/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.log
+
+# Configurações locais
+.vscode/
+.idea/
