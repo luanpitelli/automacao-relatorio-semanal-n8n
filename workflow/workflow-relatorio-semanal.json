@@ -1,0 +1,658 @@
+{
+  "name": "Automação de relatório semanal — Portfólio",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "BASE DE DADOS",
+        "height": 960,
+        "width": 224,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        144,
+        -16
+      ],
+      "typeVersion": 1,
+      "id": "9e252544-0fc4-4ad0-9c46-64c87b5fdb29",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "INICIO/ GATILHO",
+        "height": 192,
+        "width": 150
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -32,
+        336
+      ],
+      "typeVersion": 1,
+      "id": "29f1c8f2-19f4-4034-b9a2-db92999f1c13",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": [
+                1
+              ],
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -16,
+        384
+      ],
+      "id": "a467601b-a978-47af-9f81-ace9d483a4ce",
+      "name": "Gatilho"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "Semana",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        512,
+        112
+      ],
+      "id": "0f256500-fc64-4d9b-b44c-84d6bc81505f",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "COLOQUE_SEU_GOOGLE_SHEET_ID_AQUI",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Metas",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        32
+      ],
+      "id": "9beaf640-8dae-4614-ab29-2cb7e435314f",
+      "name": "metas"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "COLOQUE_SEU_GOOGLE_SHEET_ID_AQUI",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "CRM",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        208
+      ],
+      "id": "d0d1f50b-69c1-4c4b-8b60-e1a2f76bbb44",
+      "name": "Dados gerais CRM"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "COLOQUE_SEU_GOOGLE_SHEET_ID_AQUI",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Compra_Agora",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        384
+      ],
+      "id": "1bb25825-1808-41e3-a649-95a63b9bd916",
+      "name": "Dados gerais CA"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "COLOQUE_SEU_GOOGLE_SHEET_ID_AQUI",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "CAxCRM_Ticket",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        592
+      ],
+      "id": "cc29b47c-c843-4d50-83ba-e3b3294cb428",
+      "name": "CA X CRM - Ticket"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "COLOQUE_SEU_GOOGLE_SHEET_ID_AQUI",
+          "mode": "list"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "CAxCRM_Origem",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        784
+      ],
+      "id": "cf75658d-cc8d-49cd-9f57-d67c76b6dda1",
+      "name": "CA x CRM - Origem"
+    },
+    {
+      "parameters": {
+        "content": "JUNÇÃO DOS DADOS\n",
+        "height": 720,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        448,
+        64
+      ],
+      "typeVersion": 1,
+      "id": "d45184c3-dc10-41f0-8256-99a79b194ee6",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "Semana",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        512,
+        288
+      ],
+      "id": "faad8d3c-71ba-409a-b73a-4f67f0229fe7",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "Semana",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        512,
+        448
+      ],
+      "id": "956266c1-16a3-4573-9cb5-6e9dccd18aaa",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "Semana",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        512,
+        624
+      ],
+      "id": "e79bd196-b344-49a7-96a9-9fec67ba8361",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        768,
+        368
+      ],
+      "id": "08434287-bf81-490f-8a3d-e0e8b5fccbbf",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "content": "TRATAMENTO DOS DADOS / ANÁLISE DOS DADOS \n",
+        "height": 208,
+        "width": 784
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        752,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "2c73f3b1-d858-40f9-8882-0ad11d307ee8",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Você é um analista de dados responsável por elaborar um relatório semanal executivo.\n\nOBJETIVO\nAnalise TODOS os dados recebidos no JSON e produza um relatório claro, objetivo e profissional.\n\nREGRAS\n1. Use SOMENTE os dados fornecidos.\n2. Nunca invente valores, percentuais, causas, tendências ou informações.\n3. Nunca altere os valores recebidos.\n4. Se houver variação percentual fornecida nos dados, use-a. Só calcule quando necessário usando:\n((valor_final - valor_inicial) / valor_inicial) × 100\n5. Variação positiva = aumento/crescimento. Variação negativa = queda/redução.\n6. Sem semana anterior, não invente comparação.\n7. Não atribua causas aos resultados.\n8. Se os dados não forem suficientes para uma conclusão, indique que o indicador requer acompanhamento.\n9. Analise TODOS os indicadores relevantes disponíveis, não apenas sinais_priorizados.\n10. Não repita desnecessariamente o mesmo indicador.\n11. Gere no máximo 4 recomendações.\n12. O relatório deve ser completo e não pode ser interrompido antes do resumo executivo.\n\nMETAS\nAnalise individualmente:\n- Meta Geral\n- Meta Unilever\n- Meta Multi\n\nPara cada uma informe:\n- Realizado\n- Meta\n- Atingimento\n- Situação\n\nPercentuais em decimal devem ser convertidos:\n0.889 = 88,9%\n0.973 = 97,3%\n1.366 = 136,6%\n\nClassificação:\n> 100% = Meta superada\n90% a 99,9% = Próxima da meta\n< 90% = Abaixo da meta\n\nCLASSIFICAÇÃO DOS INDICADORES\n\n🟢 PONTOS POSITIVOS\nInclua crescimentos, aumentos, melhorias, aumento de receita, pedidos, ROI, Sellout, Share e metas superadas.\n\n🟡 ESTÁVEIS / DENTRO DO ESPERADO\nInclua indicadores estáveis, pequenas variações ou indicadores sem evidência suficiente para serem classificados como positivos ou negativos.\n\n🔴 PONTOS DE ATENÇÃO\nInclua quedas, reduções, deteriorações, redução de ticket/share e metas abaixo do esperado.\n\nCA x CRM\nQuando disponíveis, compare:\n- Ticket Geral\n- Ticket Assistida\n- Ticket Orgânica\n- Ticket Unilever\n- Ticket Outras\n- Pedidos\n- Receita\n- Lojas\n\nPara cada indicador informe:\nCRM\nCA\nDiferença percentual\nMaior valor\n\nSe houver diferença percentual fornecida nos dados, utilize-a.\n\nINDICADORES OPERACIONAIS\nConsidere, quando disponíveis:\nReceita, Pedidos, Ticket, ROI, Sellout, Share, Share Multi, Lojas, Lojas Ativas, Vendedores, Investimento, Ticket Médio Loja, Ticket Médio Pedido, Pedidos CRM Orgânico, Pedidos CA Orgânico, Pedidos CRM Outras Indústrias e Pedidos CA Outras Indústrias.\n\nSEMANA ANTERIOR\nQuando houver dados anteriores, utilize as variações fornecidas.\nQuando não houver, apresente somente o valor atual.\n\nOPORTUNIDADES\nIdentifique oportunidades somente quando forem sustentadas pelos dados.\nGere no máximo 4 recomendações/oportunidades.\n\nFORMATO OBRIGATÓRIO\n\n📊 RELATÓRIO SEMANAL — [MÊS] | SEMANA [NÚMERO]\n\n🎯 METAS\n\n🟢 Meta Geral\n- Realizado: [valor]\n- Meta: [valor]\n- Atingimento: [percentual]\n- Situação: [situação]\n\n🟢 Meta Unilever\n- Realizado: [valor]\n- Meta: [valor]\n- Atingimento: [percentual]\n- Situação: [situação]\n\n🟢 Meta Multi\n- Realizado: [valor]\n- Meta: [valor]\n- Atingimento: [percentual]\n- Situação: [situação]\n\n🟢 PONTOS POSITIVOS\n\n• [Indicador]: [valor e variação/comparação].\n\n🟡 ESTÁVEIS / DENTRO DO ESPERADO\n\n• [Indicador]: [valor e situação].\n\n🔴 PONTOS DE ATENÇÃO\n\n• [Indicador]: [valor e variação/comparação].\n\n⚖️ CA x CRM\n\n• [Indicador]\n- CRM: [valor]\n- CA: [valor]\n- Diferença: [percentual]\n- Maior valor: [CRM/CA/Igual]\n\n💡 OPORTUNIDADES\n\n• [Oportunidade baseada nos dados].\n\n📌 RESUMO EXECUTIVO\n\nEscreva um resumo de 3 a 5 linhas com o cenário geral da semana, principais resultados positivos e principais pontos de atenção.\n\nIMPORTANTE\n- Não copie valores deste modelo.\n- Use exclusivamente os valores do JSON.\n- Não invente informações ausentes.\n- Não invente causas.\n- Não repita indicadores sem necessidade.\n- Não crie seções fictícias.\n- Termine obrigatoriamente após concluir o RESUMO EXECUTIVO.\n\nDADOS PARA ANÁLISE:\n{{ JSON.stringify($json.dados_para_analise) }}",
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.9,
+      "position": [
+        1600,
+        368
+      ],
+      "id": "35a871c8-7f30-42f5-a665-d072104882cc",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": "openai/gpt-oss-20b",
+        "options": {
+          "maxTokensToSample": 4050
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGroq",
+      "typeVersion": 1,
+      "position": [
+        1584,
+        560
+      ],
+      "id": "c0907380-6281-48ab-ae6a-1d75f22207fe",
+      "name": "Groq Chat Model"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dea64873-b063-4ce0-af84-8d03cddac3f3",
+              "name": "relatorio_semanal",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1952,
+        368
+      ],
+      "id": "69634469-badc-491e-91e1-078a6c3568d2",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "sendTo": "SEU_EMAIL_AQUI@example.com",
+        "subject": "📊 Relatório Semanal — [Mês] | Semana [N]",
+        "message": "={{ $json.html }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        2368,
+        368
+      ],
+      "id": "e5d1679b-86bf-43a9-8920-dfe13491614a",
+      "name": "Send a message"
+    },
+    {
+      "parameters": {
+        "content": "CRIAÇÃO DO RELATORIO\n",
+        "height": 496,
+        "width": 512,
+        "color": "#683903"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1552,
+        208
+      ],
+      "typeVersion": 1,
+      "id": "82c5a007-c2f5-4e8c-932b-d3b91e4bd8f6",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst data = items\n  .map(item => item.json)\n  .sort((a, b) => Number(a.Semana) - Number(b.Semana));\n\nconst camposParaComparar = [\n  \"Receita (Mi)\",\n  \"Share\",\n  \"Pedidos\",\n  \"Ticket\",\n  \"ROI\",\n  \"Sellout (Mi)\",\n  \"Share Multi\",\n  \"Lojas Ativas\",\n  \"Ticket Médio Loja\",\n  \"Ticket Médio Pedido\",\n  \"Ticket Geral CRM\",\n  \"Ticket Geral CA\",\n  \"Ticket Assistida CRM\",\n  \"Ticket Assistida CA\",\n  \"Ticket Orgânica CRM\",\n  \"Ticket Orgânica CA\",\n  \"Ticket Unilever CRM\",\n  \"Ticket Unilever CA\",\n  \"Ticket Outras CRM\",\n  \"Ticket Outras CA\",\n  \"Pedidos CRM\",\n  \"Pedidos CA\",\n  \"Receita CRM (Mi)\",\n  \"Receita CA (Mi)\",\n  \"Lojas CRM\",\n  \"Lojas CA\"\n];\n\nconst resultado = data.map((atual, index) => {\n\n  const anterior = data[index - 1];\n\n  const variacoes = {};\n  const sinais = [];\n\n  // Comparação com a semana anterior\n  if (anterior) {\n\n    for (const campo of camposParaComparar) {\n\n      const valorAtual = Number(atual[campo]);\n      const valorAnterior = Number(anterior[campo]);\n\n      if (\n        Number.isFinite(valorAtual) &&\n        Number.isFinite(valorAnterior) &&\n        valorAnterior !== 0\n      ) {\n\n        const variacao =\n          ((valorAtual - valorAnterior) / valorAnterior) * 100;\n\n        variacoes[campo] = {\n          atual: valorAtual,\n          anterior: valorAnterior,\n          variacao_percentual: Number(variacao.toFixed(2))\n        };\n\n        // Ponto de atenção\n        if (variacao <= -5) {\n          sinais.push({\n            tipo: \"ponto_de_atencao\",\n            indicador: campo,\n            valor_atual: valorAtual,\n            valor_anterior: valorAnterior,\n            variacao_percentual: Number(variacao.toFixed(2))\n          });\n        }\n\n        // Oportunidade\n        if (variacao >= 5) {\n          sinais.push({\n            tipo: \"oportunidade\",\n            indicador: campo,\n            valor_atual: valorAtual,\n            valor_anterior: valorAnterior,\n            variacao_percentual: Number(variacao.toFixed(2))\n          });\n        }\n      }\n    }\n  }\n\n  // Análise das metas\n  const metas = [\n    {\n      indicador: \"% Meta Geral\",\n      valor: Number(atual[\"% Meta Geral\"])\n    },\n    {\n      indicador: \"% Meta Unilever\",\n      valor: Number(atual[\"% Meta Unilever\"])\n    },\n    {\n      indicador: \"% Meta Multi\",\n      valor: Number(atual[\"% Meta Multi\"])\n    }\n  ];\n\n  for (const meta of metas) {\n\n    if (!Number.isFinite(meta.valor)) continue;\n\n    const percentual = meta.valor * 100;\n\n    if (percentual >= 100) {\n      sinais.push({\n        tipo: \"meta_superada\",\n        indicador: meta.indicador,\n        percentual_meta: Number(percentual.toFixed(1))\n      });\n    }\n\n    if (percentual < 80) {\n      sinais.push({\n        tipo: \"meta_abaixo_do_esperado\",\n        indicador: meta.indicador,\n        percentual_meta: Number(percentual.toFixed(1))\n      });\n    }\n  }\n\n  return {\n    json: {\n      mes: atual[\"Mês\"],\n      semana: atual[\"Semana\"],\n\n      dados: {\n        ...atual,\n        row_number: undefined\n      },\n\n      variacoes_semana: variacoes,\n\n      sinais: sinais\n    }\n  };\n});\n\nreturn resultado;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        976,
+        368
+      ],
+      "id": "433ecdf4-4167-4de6-a683-01246d8e5106",
+      "name": "TRATAMENTO DOS DADOS"
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\n\nconst resultado = [];\n\nfor (const item of items) {\n\n  const dados = item.json;\n  const sinais = dados.sinais || [];\n\n  const sinaisPrioritarios = sinais.map(sinal => {\n\n    let prioridade = \"baixa\";\n    let pontuacao = 1;\n\n    const variacao = Number(sinal.variacao_percentual);\n\n    if (Number.isFinite(variacao)) {\n\n      const magnitude = Math.abs(variacao);\n\n      if (magnitude >= 10) {\n        prioridade = \"alta\";\n        pontuacao = 3;\n      } \n      else if (magnitude >= 5) {\n        prioridade = \"media\";\n        pontuacao = 2;\n      }\n    }\n\n    // Metas recebem prioridade maior\n    if (\n      sinal.tipo === \"meta_superada\" ||\n      sinal.tipo === \"meta_abaixo_do_esperado\"\n    ) {\n\n      const percentualMeta = Number(sinal.percentual_meta);\n\n      if (percentualMeta >= 120 || percentualMeta < 60) {\n        prioridade = \"alta\";\n        pontuacao = 3;\n      } \n      else {\n        prioridade = \"media\";\n        pontuacao = 2;\n      }\n    }\n\n    return {\n      ...sinal,\n      prioridade,\n      pontuacao\n    };\n  });\n\n  // Ordena do mais importante para o menos importante\n  sinaisPrioritarios.sort(\n    (a, b) => b.pontuacao - a.pontuacao\n  );\n\n  resultado.push({\n    json: {\n      mes: dados.mes,\n      semana: dados.semana,\n\n      dados: dados.dados,\n\n      sinais_priorizados: sinaisPrioritarios,\n\n      resumo_priorizacao: {\n        alta: sinaisPrioritarios.filter(\n          s => s.prioridade === \"alta\"\n        ).length,\n\n        media: sinaisPrioritarios.filter(\n          s => s.prioridade === \"media\"\n        ).length,\n\n        baixa: sinaisPrioritarios.filter(\n          s => s.prioridade === \"baixa\"\n        ).length\n      }\n    }\n  });\n}\n\nreturn resultado;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1184,
+        368
+      ],
+      "id": "cd70e06c-448c-477e-8a70-0ba671f6b0e1",
+      "name": "DADOS PARA ANÁLISE"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================================\n// CODE 3 - PREPARAÇÃO DO PROMPT PARA O RELATÓRIO SEMANAL\n// ============================================================\n\n// Recebe todos os dados vindos do node anterior\nconst entrada = $input.all();\n\n// Verifica se existem dados\nif (!entrada || entrada.length === 0) {\n  throw new Error(\"Nenhum dado foi recebido pelo Code 3.\");\n}\n\n// ============================================================\n// 1. ORGANIZAÇÃO DOS DADOS\n// ============================================================\n\nlet contexto = [];\n\nfor (const item of entrada) {\n  const json = item.json;\n\n  // Caso o node anterior já entregue contexto_analise\n  if (json.contexto_analise) {\n    if (Array.isArray(json.contexto_analise)) {\n      contexto.push(...json.contexto_analise);\n    } else {\n      contexto.push(json.contexto_analise);\n    }\n  }\n}\n\n// Se não encontrou contexto_analise, tenta utilizar os próprios dados\nif (contexto.length === 0) {\n  contexto = entrada.map(item => item.json);\n}\n\n// Remove possíveis duplicados\nconst contextoUnico = contexto.filter((item, index, array) => {\n  const semana = item.semana ?? item.dados?.Semana;\n  const mes = item.mes ?? item.dados?.Mês;\n\n  return (\n    array.findIndex(outro => {\n      const outraSemana = outro.semana ?? outro.dados?.Semana;\n      const outroMes = outro.mes ?? outro.dados?.Mês;\n\n      return semana === outraSemana && mes === outroMes;\n    }) === index\n  );\n});\n\n// ============================================================\n// 2. INSTRUÇÃO PARA O LLM\n// ============================================================\n\nconst instrucao = `\nVocê é um analista de dados responsável por elaborar um relatório semanal executivo.\n\nSua função é analisar TODOS os indicadores disponíveis e produzir um relatório completo, objetivo e profissional.\n\n==================================================\n1. PRINCÍPIO FUNDAMENTAL\n==================================================\n\nNÃO faça um relatório baseado somente nos indicadores presentes em \"sinais_priorizados\".\n\n\"sinais_priorizados\" serve apenas como apoio para identificar os principais destaques.\n\nVocê DEVE analisar também todos os demais dados disponíveis.\n\nO relatório precisa mostrar uma visão completa da semana.\n\nCada indicador relevante deve aparecer em uma destas categorias:\n\n🟢 PONTO POSITIVO\n🟡 ESTÁVEL / DENTRO DO ESPERADO\n🔴 PONTO DE ATENÇÃO\n\nNÃO omita indicadores relevantes.\n\nNÃO mostre somente os pontos positivos e de atenção.\n\nOs indicadores estáveis também devem aparecer.\n\n==================================================\n2. PONTOS POSITIVOS 🟢\n==================================================\n\nClassifique como positivo quando houver:\n\n- crescimento relevante;\n- melhoria em relação à semana anterior;\n- meta superada;\n- aumento de receita;\n- aumento de pedidos;\n- aumento de ROI;\n- aumento de Sellout;\n- aumento de Share;\n- evolução favorável;\n- oportunidade identificada pelos dados.\n\nSempre informe o valor atual e, quando existir, a variação percentual.\n\nExemplo:\n\n🟢 Pedidos: 65,1 mil, alta de 5,9% contra a semana anterior.\n\n🟢 ROI: 12,9, crescimento de 5,7% na comparação semanal.\n\n==================================================\n3. ESTÁVEL / DENTRO DO ESPERADO 🟡\n==================================================\n\nEsta categoria é OBRIGATÓRIA.\n\nInclua aqui os indicadores que:\n\n- não apresentaram variação relevante;\n- permaneceram estáveis;\n- não possuem sinal claro de melhora ou piora;\n- estão dentro de um comportamento esperado;\n- não possuem semana anterior para comparação, desde que não exista evidência de problema.\n\nExemplo:\n\n🟡 Lojas: 32,9 mil.\n\n🟡 Vendedores: 260.\n\nIMPORTANTE:\n\nNão considere automaticamente um indicador estável como algo ruim.\n\nTambém não invente estabilidade quando os dados mostrarem uma queda ou crescimento relevante.\n\n==================================================\n4. PONTOS DE ATENÇÃO 🔴\n==================================================\n\nClassifique como ponto de atenção quando houver:\n\n- queda relevante;\n- deterioração;\n- redução de indicador;\n- meta abaixo do esperado;\n- queda de ticket;\n- redução de participação;\n- qualquer sinal negativo sustentado pelos dados.\n\nSempre informe:\n\n- valor atual;\n- valor anterior, quando existir;\n- variação percentual, quando existir.\n\nExemplo:\n\n🔴 Ticket Orgânica CRM: R$ 1,87, queda de 28,4% contra a semana anterior.\n\n==================================================\n5. ANÁLISE DAS METAS 🎯\n==================================================\n\nAs três metas devem SEMPRE ser apresentadas individualmente.\n\nAnalise:\n\n1. Meta Geral\n2. Meta Unilever\n3. Meta Multi\n\nNUNCA transforme as três metas em apenas um número.\n\nPara cada uma informe:\n\n- valor da meta;\n- realizado;\n- percentual atingido;\n- situação.\n\nExemplo:\n\n🎯 Meta Geral: R$ 472,3 Mi de meta, R$ 645,3 Mi realizado, atingindo 136,6% da meta — meta superada.\n\n🎯 Meta Unilever: R$ 435,6 Mi de meta, R$ 565,0 Mi realizado, atingindo 129,7% da meta — meta superada.\n\n🎯 Meta Multi: R$ 36,7 Mi de meta, R$ 80,3 Mi realizado, atingindo 218,8% da meta — meta superada.\n\nSe estiver abaixo:\n\n🔴 Meta Geral: 88,9% da meta atingida — abaixo da meta.\n\nSe estiver muito próxima:\n\n🟡 Meta Multi: 97,3% da meta atingida — próxima da meta.\n\nIMPORTANTE:\n\nAs metas devem ser analisadas individualmente.\n\nNÃO diga apenas \"as metas foram atingidas\".\n\nDiga exatamente quanto cada meta atingiu.\n\n==================================================\n6. INDICADORES OPERACIONAIS\n==================================================\n\nAnalise todos os indicadores relevantes disponíveis.\n\nInclua quando existirem:\n\n- Receita;\n- Pedidos;\n- Ticket;\n- ROI;\n- Sellout;\n- Share;\n- Share Multi;\n- Lojas;\n- Lojas Ativas;\n- Vendedores;\n- Investimento;\n- Ticket Médio Loja;\n- Ticket Médio Pedido;\n- Pedidos CRM Orgânico;\n- Pedidos CA Orgânico;\n- Pedidos CRM Outras Indústrias;\n- Pedidos CA Outras Indústrias.\n\nNÃO é necessário criar um tópico separado para cada indicador.\n\nAgrupe indicadores relacionados de maneira inteligente.\n\nExemplo:\n\n📈 Desempenho Comercial\n\n🟢 Pedidos: 65,1 mil, alta de 5,9%.\n\n🟡 Lojas: 32,9 mil.\n\n🟢 ROI: 12,9, alta de 5,7%.\n\n==================================================\n7. ANÁLISE CA x CRM ⚖️\n==================================================\n\nCompare CRM e Compra Agora (CA).\n\nAnalise:\n\n- Ticket Geral;\n- Ticket Assistida;\n- Ticket Orgânica;\n- Ticket Unilever;\n- Ticket Outras Indústrias;\n- Pedidos;\n- Receita;\n- Lojas.\n\nSempre que houver diferença relevante, apresente os dois valores e a diferença.\n\nExemplo:\n\n⚖️ CA x CRM\n\nTicket Geral:\nCRM: R$ 4,41\nCA: R$ 3,78\nDiferença: CRM +16,7%.\n\nTicket Orgânica:\nCRM: R$ 1,87\nCA: R$ 3,05\nDiferença: CRM -38,7%.\n\nQuando a diferença for pequena, pode classificar como estável.\n\n==================================================\n8. COMPARAÇÃO COM A SEMANA ANTERIOR\n==================================================\n\nQuando existir semana anterior:\n\nCompare os indicadores.\n\nUtilize as variações fornecidas nos dados.\n\nNão invente variações.\n\nExemplo:\n\nSemana 33:\n\nPedidos: 65.100\n\nSemana 32:\n\nPedidos: 61.500\n\nVariação: +5,85%\n\nResultado:\n\n🟢 Pedidos: 65,1 mil, crescimento de 5,9% contra a semana anterior.\n\n==================================================\n9. NÃO DUPLICAR INFORMAÇÕES\n==================================================\n\nEvite repetir o mesmo indicador várias vezes.\n\nPor exemplo:\n\nPedidos\nPedidos CRM\nPedidos CA\n\npodem ser apresentados juntos quando representarem o mesmo fenômeno.\n\nExemplo:\n\n🟢 Pedidos: CRM 65,1 mil e CA 67,2 mil, com crescimento de aproximadamente 5,9% e 5,8%, respectivamente.\n\nNão repita o mesmo crescimento em três tópicos diferentes.\n\n==================================================\n10. NÃO INVENTAR CAUSAS\n==================================================\n\nUse SOMENTE os dados fornecidos.\n\nNÃO invente explicações.\n\nNão diga:\n\n\"O ticket caiu devido à mudança de comportamento dos clientes.\"\n\nA menos que essa informação esteja nos dados.\n\nPode dizer:\n\n\"🔴 Ticket Orgânica CRM: R$ 1,87, queda de 28,4% contra a semana anterior.\"\n\n==================================================\n11. PRIMEIRA SEMANA\n==================================================\n\nSe não existir semana anterior:\n\nNÃO invente comparação.\n\nNão diga que cresceu ou caiu.\n\nApresente apenas o valor disponível.\n\n==================================================\n12. FORMATO OBRIGATÓRIO\n==================================================\n\nUse exatamente esta estrutura:\n\n📊 RELATÓRIO SEMANAL — [MÊS] | SEMANA [NÚMERO]\n\n🎯 METAS\n\nApresente individualmente:\n\n- Meta Geral\n- Meta Unilever\n- Meta Multi\n\nMostre:\n\n- meta;\n- realizado;\n- percentual atingido;\n- situação.\n\n---\n\n🟢 PONTOS POSITIVOS\n\nApresente os indicadores que:\n\n- melhoraram;\n- cresceram;\n- superaram metas;\n- apresentaram evolução positiva;\n- representam oportunidades.\n\n---\n\n🟡 ESTÁVEIS / DENTRO DO ESPERADO\n\nApresente os indicadores que:\n\n- permaneceram estáveis;\n- não tiveram variação relevante;\n- estão dentro do esperado;\n- não possuem sinal claro de deterioração.\n\nNÃO pule esta seção.\n\nMesmo que existam muitos pontos positivos e de atenção, mostre também os indicadores estáveis.\n\n---\n\n🔴 PONTOS DE ATENÇÃO\n\nApresente:\n\n- quedas;\n- deteriorações;\n- metas abaixo do esperado;\n- indicadores que precisam de acompanhamento.\n\n---\n\n⚖️ CA x CRM\n\nCompare os principais indicadores entre CRM e Compra Agora.\n\n---\n\n📌 RESUMO EXECUTIVO\n\nFaça um resumo curto respondendo:\n\n1. Como foi o desempenho geral?\n2. Como ficaram as três metas?\n3. Quais foram os principais pontos positivos?\n4. Quais foram os principais pontos de atenção?\n5. Quais indicadores permaneceram estáveis?\n\n==================================================\n13. REGRA MAIS IMPORTANTE\n==================================================\n\nO relatório deve mostrar os três lados do desempenho:\n\n🟢 O QUE MELHOROU\n\n🟡 O QUE PERMANECEU ESTÁVEL\n\n🔴 O QUE PIOROU\n\nNÃO faça um relatório somente com os indicadores de \"sinais_priorizados\".\n\nUse os sinais priorizados para destacar os principais pontos, mas analise também todos os demais indicadores disponíveis.\n\nNENHUM indicador relevante deve desaparecer simplesmente porque não foi classificado previamente.\n\nSe houver muitos indicadores, agrupe-os de forma inteligente.\n\nSeja objetivo, profissional e direto.\n\nSempre que possível, apresente valores e percentuais.\n\nNão escreva explicações longas ou especulativas.\n`;\n\n// ============================================================\n// 3. MONTA O PROMPT FINAL\n// ============================================================\n\nconst dadosFormatados = JSON.stringify(contextoUnico, null, 2);\n\nconst promptFinal = `\n${instrucao}\n\n==================================================\nDADOS PARA ANÁLISE\n==================================================\n\n${dadosFormatados}\n\n==================================================\nFIM DOS DADOS\n==================================================\n\nAgora gere o relatório seguindo EXATAMENTE as regras acima.\n`;\n\n// ============================================================\n// 4. RETORNO PARA O PRÓXIMO NODE\n// ============================================================\n\nreturn [\n  {\n    json: {\n      instrucao_para_llm: instrucao,\n      dados_para_analise: contextoUnico,\n      prompt_final: promptFinal\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1392,
+        368
+      ],
+      "id": "aa7167b1-9e9a-4401-b848-41716efe1190",
+      "name": "FORMATAÇÃO DO RELATORIO"
+    },
+    {
+      "parameters": {
+        "content": "ENVIO DE RELATORIO",
+        "height": 208,
+        "width": 384
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2112,
+        320
+      ],
+      "typeVersion": 1,
+      "id": "60444c46-234f-4226-a477-45e97fb6de18",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ==========================================================\n// PARSER + GERADOR DE HTML — Relatório Semanal (Groq -> E-mail)\n// Cole este código inteiro no Code node (linguagem: JavaScript)\n// ==========================================================\n\nconst raw = $json.relatorio_semanal || '';\n\n// 1. Normaliza quebras de linha e aspas escapadas vindas da LLM\nconst text = raw\n  .replace(/\\\\n/g, '\\n')\n  .replace(/\\\\\"/g, '\"');\n\nfunction escapeHtml(str) {\n  return String(str)\n    .replace(/&/g, '&amp;')\n    .replace(/</g, '&lt;')\n    .replace(/>/g, '&gt;')\n    .replace(/\"/g, '&quot;')\n    .replace(/'/g, '&#039;');\n}\n\n// 2. Divide o texto em seções, usando os cabeçalhos que a LLM sempre gera\nconst headerRegex = /(🎯\\s*METAS|🟢\\s*PONTOS POSITIVOS|🟡\\s*ESTÁVEIS\\s*\\/\\s*DENTRO DO ESPERADO|🔴\\s*PONTOS DE ATENÇÃO|⚖️\\s*CA x CRM|💡\\s*OPORTUNIDADES|📌\\s*RESUMO EXECUTIVO)/g;\n\nconst rawParts = text.split(headerRegex);\nconst sections = {};\n// rawParts[0] = título antes do primeiro cabeçalho (ignorado)\nfor (let i = 1; i < rawParts.length; i += 2) {\n  const header = rawParts[i].replace(/\\s+/g, ' ').trim();\n  const content = (rawParts[i + 1] || '').trim();\n  sections[header] = content;\n}\n\nfunction getSection(keyPart) {\n  const key = Object.keys(sections).find(k => k.includes(keyPart));\n  return key ? sections[key] : '';\n}\n\nconst metasSection = getSection('METAS');\nconst positivosSection = getSection('POSITIVOS');\nconst estaveisSection = getSection('ESTÁVEIS');\nconst atencaoSection = getSection('ATENÇÃO');\nconst caCrmSection = getSection('CA x CRM');\nconst oportunidadesSection = getSection('OPORTUNIDADES');\nconst resumoSection = getSection('RESUMO EXECUTIVO');\n\n// 3. Extrai os blocos de metas (funciona com qualquer nome/quantidade de metas)\nfunction parseMetas(str) {\n  const regex = /[🟢🟡🔴]\\s*Meta\\s+([^\\n]+)\\n-\\s*Realizado:\\s*([^\\n]+)\\n-\\s*Meta:\\s*([^\\n]+)\\n-\\s*Atingimento:\\s*([^\\n]+)\\n-\\s*Situação:\\s*([^\\n]+)/g;\n  const metas = [];\n  let m;\n  while ((m = regex.exec(str)) !== null) {\n    metas.push({\n      nome: m[1].trim(),\n      realizado: m[2].trim(),\n      meta: m[3].trim(),\n      atingimento: m[4].trim(),\n      situacao: m[5].trim()\n    });\n  }\n  return metas;\n}\n\n// 4. Extrai bullets simples (linhas que começam com •)\nfunction parseBullets(str) {\n  const regex = /•\\s*([^\\n]+)/g;\n  const bullets = [];\n  let m;\n  while ((m = regex.exec(str)) !== null) {\n    bullets.push(m[1].trim());\n  }\n  return bullets;\n}\n\n// 5. Extrai os blocos CA x CRM\nfunction parseCaCrm(str) {\n  const regex = /•\\s*([^\\n]+)\\n\\s*-\\s*CRM:\\s*([^\\n]+)\\n\\s*-\\s*CA:\\s*([^\\n]+)\\n\\s*-\\s*Diferença:\\s*([^\\n]+)\\n\\s*-\\s*Maior valor:\\s*([^\\n]+)/g;\n  const rows = [];\n  let m;\n  while ((m = regex.exec(str)) !== null) {\n    rows.push({\n      indicador: m[1].trim(),\n      crm: m[2].trim(),\n      ca: m[3].trim(),\n      diferenca: m[4].trim(),\n      maior: m[5].trim()\n    });\n  }\n  return rows;\n}\n\nconst metas = parseMetas(metasSection);\nconst positivos = parseBullets(positivosSection);\nconst estaveis = parseBullets(estaveisSection);\nconst atencao = parseBullets(atencaoSection);\nconst oportunidades = parseBullets(oportunidadesSection);\nconst caCrm = parseCaCrm(caCrmSection);\nconst resumo = resumoSection.replace(/\\n+/g, ' ').trim();\n\n// 6. Helpers de estilo condicional\nfunction corSituacao(situacao) {\n  const s = situacao.toLowerCase();\n  if (s.includes('superada') || s.includes('atingida')) return { bg: '#eafaf0', border: '#22a35a', text: '#1c7a44' };\n  if (s.includes('não') || s.includes('abaixo')) return { bg: '#fdf1f0', border: '#d9463e', text: '#b3352d' };\n  return { bg: '#fdf8ec', border: '#e0a613', text: '#9a7409' };\n}\n\nfunction corMaiorValor(maior) {\n  const m = maior.toLowerCase();\n  if (m.includes('crm')) return '#1c7a44';\n  if (m.includes('ca')) return '#b3352d';\n  return '#6b7280';\n}\n\n// 7. Monta os blocos de HTML dinamicamente\n\nconst metasHtml = metas.map(meta => {\n  const cor = corSituacao(meta.situacao);\n  return `\n<td width=\"${Math.floor(100 / metas.length)}%\" valign=\"top\" style=\"background-color:${cor.bg}; border-radius:6px; padding:14px; border-left:4px solid ${cor.border};\">\n<div style=\"font-size:12px; color:${cor.text}; font-weight:bold; text-transform:uppercase;\">${escapeHtml(meta.nome)}</div>\n<div style=\"font-size:19px; font-weight:bold; color:#12331f; padding:6px 0 2px 0;\">${escapeHtml(meta.atingimento)}</div>\n<div style=\"font-size:12px; color:#3a5a48;\">Realizado: ${escapeHtml(meta.realizado)}</div>\n<div style=\"font-size:12px; color:#3a5a48;\">Meta: ${escapeHtml(meta.meta)}</div>\n<div style=\"font-size:11px; color:${cor.text}; font-weight:bold; padding-top:4px;\">${escapeHtml(meta.situacao)}</div>\n</td>`;\n}).join('');\n\nfunction bulletsHtml(lista) {\n  return lista.map(item => `<li>${escapeHtml(item)}</li>`).join('');\n}\n\nconst caCrmRowsHtml = caCrm.map((row, idx) => {\n  const bg = idx % 2 === 0 ? '#f7f9fb' : '#ffffff';\n  const cor = corMaiorValor(row.maior);\n  return `\n<tr style=\"background-color:${bg};\">\n<td style=\"padding:8px 10px; border-bottom:1px solid #e6e9ee;\">${escapeHtml(row.indicador)}</td>\n<td align=\"right\" style=\"padding:8px 10px; border-bottom:1px solid #e6e9ee;\">${escapeHtml(row.crm)}</td>\n<td align=\"right\" style=\"padding:8px 10px; border-bottom:1px solid #e6e9ee;\">${escapeHtml(row.ca)}</td>\n<td align=\"right\" style=\"padding:8px 10px; border-bottom:1px solid #e6e9ee; color:${cor}; font-weight:bold;\">${escapeHtml(row.diferenca)}</td>\n<td align=\"center\" style=\"padding:8px 10px; border-bottom:1px solid #e6e9ee;\">${escapeHtml(row.maior)}</td>\n</tr>`;\n}).join('');\n\n// 8. Monta o HTML final do e-mail\nconst html = `\n<!DOCTYPE html>\n<html lang=\"pt-BR\">\n<head>\n<meta charset=\"UTF-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>Relatório Semanal</title>\n</head>\n<body style=\"margin:0; padding:0; background-color:#f2f4f6; font-family:Arial, Helvetica, sans-serif;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f2f4f6; padding:24px 0;\">\n<tr>\n<td align=\"center\">\n<table role=\"presentation\" width=\"680\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#ffffff; border-radius:8px; overflow:hidden; border:1px solid #e2e5e9;\">\n\n<tr>\n<td style=\"background-color:#1a2b4c; padding:28px 32px;\">\n<div style=\"color:#ffffff; font-size:20px; font-weight:bold;\">Relatório Semanal de Desempenho</div>\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:28px 32px 8px 32px;\">\n<div style=\"font-size:15px; font-weight:bold; color:#1a2b4c; border-bottom:2px solid #1a2b4c; padding-bottom:6px;\">🎯 Metas</div>\n</td>\n</tr>\n<tr>\n<td style=\"padding:12px 32px 20px 32px;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"10\"><tr>${metasHtml}</tr></table>\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:8px 32px;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#f4faf6; border-radius:6px; border-left:4px solid #22a35a;\">\n<tr><td style=\"padding:14px 18px;\">\n<div style=\"font-size:14px; font-weight:bold; color:#1c7a44; padding-bottom:8px;\">🟢 Pontos positivos</div>\n<ul style=\"margin:0; padding-left:18px; font-size:13px; color:#2c3e35; line-height:1.6;\">${bulletsHtml(positivos)}</ul>\n</td></tr>\n</table>\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:8px 32px;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#fdf8ec; border-radius:6px; border-left:4px solid #e0a613;\">\n<tr><td style=\"padding:14px 18px;\">\n<div style=\"font-size:14px; font-weight:bold; color:#9a7409; padding-bottom:8px;\">🟡 Estáveis / dentro do esperado</div>\n<ul style=\"margin:0; padding-left:18px; font-size:13px; color:#4a3d1f; line-height:1.6;\">${bulletsHtml(estaveis)}</ul>\n</td></tr>\n</table>\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:8px 32px;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#fdf1f0; border-radius:6px; border-left:4px solid #d9463e;\">\n<tr><td style=\"padding:14px 18px;\">\n<div style=\"font-size:14px; font-weight:bold; color:#b3352d; padding-bottom:8px;\">🔴 Pontos de atenção</div>\n<ul style=\"margin:0; padding-left:18px; font-size:13px; color:#4a2b28; line-height:1.6;\">${bulletsHtml(atencao)}</ul>\n</td></tr>\n</table>\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:20px 32px 8px 32px;\">\n<div style=\"font-size:15px; font-weight:bold; color:#1a2b4c; border-bottom:2px solid #1a2b4c; padding-bottom:6px;\">⚖️ CA x CRM</div>\n</td>\n</tr>\n<tr>\n<td style=\"padding:12px 32px 20px 32px;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"border-collapse:collapse; font-size:12.5px;\">\n<tr style=\"background-color:#1a2b4c;\">\n<th align=\"left\" style=\"padding:9px 10px; color:#ffffff;\">Indicador</th>\n<th align=\"right\" style=\"padding:9px 10px; color:#ffffff;\">CRM</th>\n<th align=\"right\" style=\"padding:9px 10px; color:#ffffff;\">CA</th>\n<th align=\"right\" style=\"padding:9px 10px; color:#ffffff;\">Diferença</th>\n<th align=\"center\" style=\"padding:9px 10px; color:#ffffff;\">Maior</th>\n</tr>\n${caCrmRowsHtml}\n</table>\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:8px 32px;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#eef4fb; border-radius:6px; border-left:4px solid #2f6fb3;\">\n<tr><td style=\"padding:14px 18px;\">\n<div style=\"font-size:14px; font-weight:bold; color:#1f4d80; padding-bottom:8px;\">💡 Oportunidades</div>\n<ul style=\"margin:0; padding-left:18px; font-size:13px; color:#26374a; line-height:1.6;\">${bulletsHtml(oportunidades)}</ul>\n</td></tr>\n</table>\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:20px 32px 32px 32px;\">\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background-color:#1a2b4c; border-radius:6px;\">\n<tr><td style=\"padding:18px 20px;\">\n<div style=\"font-size:14px; font-weight:bold; color:#ffffff; padding-bottom:8px;\">📌 Resumo executivo</div>\n<div style=\"font-size:13px; color:#dbe4f2; line-height:1.7;\">${escapeHtml(resumo)}</div>\n</td></tr>\n</table>\n</td>\n</tr>\n\n<tr>\n<td style=\"padding:16px 32px; background-color:#f7f9fb; border-top:1px solid #e6e9ee;\">\n<div style=\"font-size:11px; color:#8b93a1; text-align:center;\">Relatório gerado automaticamente</div>\n</td>\n</tr>\n\n</table>\n</td>\n</tr>\n</table>\n</body>\n</html>\n`;\n\n// 9. Retorna o item com o HTML pronto pra ser usado no node de envio de e-mail\nreturn [{ json: { html } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2160,
+        368
+      ],
+      "id": "fdc12c24-e38a-484c-8bf9-93675d054210",
+      "name": "GERAR RELATORIO"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Gatilho": {
+      "main": [
+        [
+          {
+            "node": "Dados gerais CRM",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Dados gerais CA",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "CA X CRM - Ticket",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "CA x CRM - Origem",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "metas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "metas": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dados gerais CRM": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Dados gerais CA": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "CA X CRM - Ticket": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "CA x CRM - Origem": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "TRATAMENTO DOS DADOS",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Groq Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "GERAR RELATORIO",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TRATAMENTO DOS DADOS": {
+      "main": [
+        [
+          {
+            "node": "DADOS PARA ANÁLISE",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DADOS PARA ANÁLISE": {
+      "main": [
+        [
+          {
+            "node": "FORMATAÇÃO DO RELATORIO",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "FORMATAÇÃO DO RELATORIO": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GERAR RELATORIO": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "tags": []
+}
